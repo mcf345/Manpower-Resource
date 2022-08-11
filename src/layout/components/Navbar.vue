@@ -9,10 +9,16 @@
     <!-- <breadcrumb class="breadcrumb-container" /> -->
 
     <div class="right-menu">
+      <Lang class="items" />
+
+      <ThemePicker class=" theme item" />
+
+      <ScreenFull class="items" />
+
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img v-imgError="defaultImg" :src=" $store.getters.staffPhoto " class="user-avatar">
-          <span class="name">{{ $store.getters.username }}</span>
+          <img v-imgError="defaultImg" :src=" $store.getters.staffPhoto " class="user-avatar" alt="">
+          <span class="name">{{ $store.getters.name }}</span>
           <i class="el-icon-caret-bottom" style="color:#fff" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -36,8 +42,10 @@
 <script>
 import { mapGetters } from 'vuex'
 import Hamburger from '@/components/Hamburger'
+// import ScreenFull from '@/components/ScreenFull'
 
 export default {
+  name: 'NavBar',
   components: { Hamburger },
   data() {
     return {
@@ -123,6 +131,18 @@ export default {
     float: right;
     height: 100%;
     line-height: 50px;
+    display: flex;
+    align-items: center;
+
+    .theme {
+      margin-right: 20px;
+      height: unset;
+    }
+
+    .items {
+      margin-right: 20px;
+      cursor: pointer;
+    }
 
     &:focus {
       outline: none;

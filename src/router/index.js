@@ -43,15 +43,17 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: 'dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
     }]
   }
 
 ]
-
+// 生产环境用的多的是history
 const createRouter = () => new Router({
+  mode: 'history',
+  base: '/hr/', // 配置项目的基础地址
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: [...constantRoutes]
